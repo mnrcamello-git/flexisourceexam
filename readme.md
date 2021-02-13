@@ -8,6 +8,10 @@ uncomment $app->withEloquent(); -> bootstrap/app.php
 It uses Guzzle which is already included in composer.json file. Just simply run composer install first.
 Version used: Laravel Framework Lumen (5.7.8) (Laravel Components 5.7.*) 
 PHP 7.3
+Artisan Development (Building A Command)
+Model Eloquent ORM
+Repository Pattern
+
 
 ### Syntax ###
 commands:
