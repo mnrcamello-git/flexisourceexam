@@ -16,3 +16,7 @@ Repository Pattern
 ### Syntax ###
 commands:
 php artisan import:posts -> Console based command to run import on https://randomuser.me endpoint to local database table
+
+### Working Video ###
+Gdrive: https://drive.google.com/file/d/1ezvV5NLT_8ZY9H88Vvsi7O2ShnhNOktc/view?usp=sharing
+Youtube: https://youtu.be/HUfgdrshAuo
