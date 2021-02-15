@@ -14,9 +14,12 @@ class CustomerRepository
 
     public function insertCustomer($data)
     {
+  
         collect($data->results)->each(
             function ($collection) {
-                Customer::firstOrCreate([
+                Customer::updateOrCreate([
+                    'email'   => $collection->email,
+                ], [
                     'name' => Customer::getFullNameAttribute($collection->name->first, $collection->name->last),
                     'email' => $collection->email,
                     'gender' => $collection->gender,
@@ -34,14 +37,13 @@ class CustomerRepository
                     'phone' => $collection->phone,
                     'cell' => $collection->cell
                 ]);
+                
+                $this->insertLogin($collection);
             }
         );
-        $this->insertLogin($data);
     }
 
-    private function insertLogin($data) {
-        collect($data->results)->each(
-            function ($collection) {
+    private function insertLogin($collection) {
                 User::create([
                     'uuid' => $collection->login->uuid,
                     'password' => Hash::make($collection->login->password),
@@ -52,7 +54,5 @@ class CustomerRepository
                     'sha256' => $collection->login->sha256,
                     'customer_id' => DB::getPdo()->lastInsertId()
                 ]);
-            }
-        );
     }
 }
